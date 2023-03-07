@@ -13,22 +13,54 @@ il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 // DOM elements
 
 const containerDom = document.querySelector('.container');
+const scoreDom = document.getElementById('score');
+const numeriIndovinatiDom = document.getElementById('numeri-indovinati');
 console.log(containerDom);
 
 // Genero 5 numeri casuali
 
 let cellaNumero; 
 let listaNumeri = [];
+let numeriUtente = [];
+let risultato = [];
 
 for (let i = 0; i < 5; i++) {
-    numeroRandom = generaNumeroRandom(1, 100);
-    console.log(numeroRandom);
+    numeroRandom = generaNumeroRandomUnico(listaNumeri, 1, 100);
     cellaNumero = numberContainerGenerator(numeroRandom); 
-    console.log(cellaNumero);
     containerDom.append(cellaNumero); 
     listaNumeri.push(numeroRandom);
 }
-console.log(listaNumeri);
+
+// Rendo invisibili i numeri dop 30 secondi
+setTimeout(function() {
+    containerDom.classList.add('hide');
+}, 30000);
+
+// Chiedo i numeri all'utente 5 volte 
+
+setTimeout(function() {
+        
+    for (let i = 0; i < 5; i++) {
+
+        let numeroUtente = parseInt(prompt('Inserisci un numero tra 1 e 100'));
+        numeriUtente.push(numeroUtente);
+        if (listaNumeri.includes(numeroUtente)) {
+            risultato.push(numeroUtente);            
+        }
+        containerDom.classList.remove('hide');
+
+    }
+
+    scoreDom.innerHTML = 
+    `Il tuo risultato è ${risultato.length}`;
+    numeriIndovinatiDom.innerHTML = 
+    `Hai indovinato i seguenti numeri: ${risultato}`;
+
+    console.log(listaNumeri);
+    console.log(numeriUtente);
+    console.log(`I numeri uguali sono ${risultato}`);
+}, 31000);
+
 
 
 
@@ -44,6 +76,20 @@ function generaNumeroRandom(min, max) {
     return numeroRandom;
 }
 
+// Funzione genera numero rundom univoco
+function generaNumeroRandomUnico(blacklist, min, max) {
+    let isValid = false;
+    let numeroRandomUnico;
+
+    while (!isValid) {
+        numeroRandomUnico = generaNumeroRandom(min, max);
+        if (!blacklist.includes(numeroRandomUnico)) {
+            isValid = true;
+        }
+    }
+    return numeroRandomUnico;
+}
+
 // Funzione per creare contenitore numero
 function numberContainerGenerator(number) {
     const numberContainer = document.createElement('div');
@@ -51,7 +97,7 @@ function numberContainerGenerator(number) {
     numberContainer.classList.add('number-container');
 
     // Assegno posizione random
-    let misuraX = randomPosition(50, 1000);
+    let misuraX = randomPosition(50, 600);
     let misuraY = randomPosition(50, 800);
     numberContainer.style.position = `absolute`;
     numberContainer.style.top = misuraY;
@@ -72,7 +118,10 @@ function randomPosition(misuraMin, misuraMax) {
 }
 
 // Funzione prompt per richieder numeri
-/* function promptNumeri() {
-    let 
-} */
+function promptNumeri() {
+    let numeroUtente = parseInt(prompt('Inserisci un numero tra 1 e 100'));
+    return numeroUtente;
+} 
+
+
 
