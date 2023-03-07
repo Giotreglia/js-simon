@@ -32,15 +32,13 @@ main {
 
 #numeri-indovinati {
     font-size: 30px;
-    line-height: 1.5rem;
+    line-height: 3rem;
 }
 
 #score, #numeri-indovinati {
-    text-align: center;
+    text-align: right;
     padding: 10px;
 }
-
-
 
 .hide {
     display: none;
