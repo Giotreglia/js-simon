@@ -97,8 +97,8 @@ function numberContainerGenerator(number) {
     numberContainer.classList.add('number-container');
 
     // Assegno posizione random
-    let misuraX = randomPosition(50, 600);
-    let misuraY = randomPosition(50, 800);
+    let misuraX = randomPosition(50, 1200);
+    let misuraY = randomPosition(50, 600);
     numberContainer.style.position = `absolute`;
     numberContainer.style.top = misuraY;
     numberContainer.style.left = misuraX;

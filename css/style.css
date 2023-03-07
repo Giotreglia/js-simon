@@ -10,8 +10,7 @@ main {
 }
 
 .container {
-    margin-left: 20vw;
-    width: 800px;
+    width: 70vw;
     height: 100vh;
     position: relative;
     border: solid 10px black;
@@ -23,7 +22,8 @@ main {
 }
 
 .score-container {
-    padding: 200px 50px;
+    padding: 50px;
+    width: 30vw;
 }
 
 #score {
@@ -35,7 +35,7 @@ main {
     line-height: 3rem;
 }
 
-#score, #numeri-indovinati {
+#score, #numeri-indovinati, #istruzioni {
     text-align: right;
     padding: 10px;
 }
