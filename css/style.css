@@ -26,8 +26,12 @@ main {
     width: 30vw;
 }
 
+#title {
+    font-size: 100px;
+}
+
 #score {
-    font-size: 80px;
+    font-size: 60px;
 }
 
 #numeri-indovinati {
@@ -35,7 +39,7 @@ main {
     line-height: 3rem;
 }
 
-#score, #numeri-indovinati, #istruzioni {
+#score, #numeri-indovinati, #istruzioni, #title {
     text-align: right;
     padding: 10px;
 }
